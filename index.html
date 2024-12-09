@@ -5,80 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문한민 - 포트폴리오</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
             color: #333;
         }
         header {
-            background-color: #6c63ff;
+            background: linear-gradient(120deg, #6c63ff, #3a3ee3);
             color: white;
-            padding: 1.5em 1em;
             text-align: center;
+            padding: 100px 20px;
         }
         header h1 {
-            margin: 0;
-            font-size: 2.5em;
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
         header p {
-            font-size: 1.2em;
-            margin: 0.5em 0 0;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 10px 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #6c63ff;
         }
         section {
-            max-width: 800px;
-            margin: 2em auto;
-            background: white;
-            padding: 2em;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         section h2 {
-            margin-top: 0;
+            text-align: center;
+            font-size: 2.5rem;
             color: #6c63ff;
-            font-size: 1.8em;
+            margin-bottom: 20px;
         }
-        ul {
-            list-style-type: disc;
-            padding-left: 1.5em;
+        .intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .intro img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .intro p {
+            flex: 1;
+            font-size: 1.2rem;
+        }
+        .skills ul, .projects ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            list-style: none;
+            margin-top: 20px;
+        }
+        .skills li, .projects li {
+            background: #6c63ff;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .skills li:hover, .projects li:hover {
+            transform: scale(1.1);
         }
         footer {
             text-align: center;
-            padding: 1em 0;
-            background-color: #6c63ff;
+            padding: 20px;
+            background: #6c63ff;
             color: white;
-            margin-top: 2em;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#skills">기술</a></li>
+            <li><a href="#projects">프로젝트</a></li>
+            <li><a href="#contact">연락처</a></li>
+        </ul>
+    </nav>
     <header>
         <h1>문한민</h1>
-        <p>웹 개발자 포트폴리오</p>
+        <p>웹 개발자로서의 도전과 성장</p>
     </header>
-    <section>
+    <section id="about">
         <h2>소개</h2>
-        <p>안녕하세요! 저는 문한민입니다. 현재 25세이며, 명지전문대를 졸업했습니다. Java, JSP, SQL 등 다양한 웹 개발 기술을 활용할 수 있으며, 열정적으로 새로운 도전을 즐깁니다.</p>
+        <div class="intro">
+            <img src="https://via.placeholder.com/300" alt="문한민 사진">
+            <p>안녕하세요! 저는 명지전문대를 졸업한 웹 개발자 문한민입니다. Java, JSP, SQL을 활용하여 창의적이고 실용적인 솔루션을 개발하는 데 열정이 있습니다.</p>
+        </div>
     </section>
-    <section>
-        <h2>학력</h2>
-        <p>명지전문대</p>
-    </section>
-    <section>
-        <h2>사용 가능한 기술</h2>
+    <section id="skills">
+        <h2>기술</h2>
         <ul>
             <li>Java</li>
             <li>JSP</li>
             <li>SQL</li>
+            <li>HTML & CSS</li>
+            <li>JavaScript</li>
         </ul>
     </section>
-    <section>
+    <section id="projects">
         <h2>프로젝트</h2>
-        <p>아래는 제가 참여했던 주요 프로젝트들입니다:</p>
         <ul>
-            <li>게시판 웹사이트 개발 (Java, JSP, MyBatis 활용)</li>
+            <li>게시판 웹사이트 개발</li>
+            <li>도서 관리 시스템</li>
+            <li>스마트워치 AI 프로젝트</li>
         </ul>
     </section>
     <footer>
