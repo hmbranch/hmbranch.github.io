@@ -145,6 +145,23 @@
                 width: 100%;
             }
         }
+        .project-image {
+            background-color: #ddd;
+            width: 100%; /* 부모 요소에 맞게 가로 크기 */
+            max-width: 800px; /* 최대 너비 설정 */
+            height: auto; /* 높이를 자동으로 설정하여 이미지 비율을 유지 */
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden; /* 이미지가 넘칠 경우 숨김 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        }
+
+        .project-image img {
+            width: 100%; /* 이미지 가로 크기 조정 */
+            height: auto; /* 높이 자동 비율 유지 */
+            display: block;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -180,9 +197,9 @@
             <p>게시판 웹사이트 개발</p>
             <a href="your-project2.pdf" target="_blank">
                 <div class="project-image">
-                    <img src="https://private-user-images.githubusercontent.com/191102079/394141418-49c87f0f-115a-4fa2-9dde-8e49cf95d319.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzM4MTExNDQsIm5iZiI6MTczMzgxMDg0NCwicGF0aCI6Ii8xOTExMDIwNzkvMzk0MTQxNDE4LTQ5Yzg3ZjBmLTExNWEtNGZhMi05ZGRlLThlNDljZjk1ZDMxOS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMjEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTIxMFQwNjA3MjRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02MDhiZWQwZTYzNDBhNDc2NDAxN2JmMmI2MDA4ZWQ2YjczYzM0NjQ1YTg1ZGYzMTgyYmE5ZmMxMzMyMGQxZmM1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.ysV4YzYT-uUPlKWST2b_vS7M-e72nyY3R3NaIlDu-Pw" alt="프로젝트 이미지">
+                    <img src="https://private-user-images.githubusercontent.com/191102079/394141418-49c87f0f-115a-4fa2-9dde-8e49cf95d319.png" alt="프로젝트 이미지">
                 </div>
-            </a>
+            </a>            
         </div>
         <div id="contact" class="section">
             <h2>연락처</h2>
