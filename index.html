@@ -69,14 +69,14 @@
         }
 
         /* 기술 스택 섹션 */
-        .skill-box {
+        .skill-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
         }
-        .skill-category {
-            width: 300px;
+        .skill {
+            width: 150px;
             text-align: center;
             padding: 20px;
             border-radius: 10px;
@@ -84,35 +84,66 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .skill-category:hover {
+        .skill:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
-        .skill-category h3 {
-            font-size: 1.5rem;
+        .skill h3 {
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* 프로젝트 이미지 스타일 */
+        .project-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 20px auto 40px auto;
+        }
+
+        /* 연락처 섹션 스타일 */
+        .contact-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact-card h3 {
             margin-bottom: 20px;
             color: #333;
         }
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .skill {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .contact-info div {
+            margin-bottom: 10px;
             font-size: 1rem;
-            color: #444;
+            color: #666;
         }
-        .skill i {
+        .contact-info div span {
+            font-weight: bold;
+            color: #333;
+        }
+        .contact-icons {
+            margin-top: 20px;
+        }
+        .contact-icons a {
+            margin: 0 10px;
             font-size: 2rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .contact-icons a:hover {
             color: #6c63ff;
         }
 
         /* 반응형 디자인 */
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
             nav {
                 width: 100%;
                 height: auto;
@@ -144,6 +175,15 @@
 
     <!-- 메인 콘텐츠 -->
     <div class="content">
+        <div id="home" class="section">
+            <h1 style="font-size: 3rem; font-weight: bold; color: #333; text-align: center;">문한민</h1>
+            <h3 style="font-size: 1.5rem; font-weight: normal; color: #666; text-align: center; margin-bottom: 20px;">신입 백엔드 웹 개발자</h3>
+            <p style="text-align: center; font-size: 1rem; line-height: 1.6; color: #444; max-width: 600px; margin: 0 auto;">
+                안녕하세요! 새로운 기술에 대한 열정과 끊임없는 학습으로 성장하는 신입 백엔드 웹 개발자 문한민입니다. 
+                Java, JSP, SQL과 같은 기술을 기반으로 사용자 중심의 웹 서비스를 구현하는 데 관심이 많습니다. 
+                협업과 소통을 통해 더 나은 결과를 만들어내고, 문제를 해결하는 데 기여할 수 있는 개발자가 되기 위해 노력하고 있습니다.
+            </p>
+        </div>
         <div id="skills" class="section">
             <h2 style="text-align: center; margin-bottom: 30px;">기술 스택</h2>
             <div class="skill-box">
@@ -173,9 +213,7 @@
                         <div class="skill"><i class="fas fa-database"></i> MySQL</div>
                     </div>
                 </div>
-            </div>
         </div>
-    </div>
         <div id="projects" class="section">
             <h2>프로젝트</h2>
             <p>게시판 웹사이트 개발</p>
