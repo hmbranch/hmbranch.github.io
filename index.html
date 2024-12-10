@@ -15,7 +15,7 @@
             font-family: 'Arial', sans-serif;
             background-color: #f6f6f6;
             overflow-x: hidden;
-            scroll-behavior: smooth; /* 부드러운 스크롤 */
+            scroll-behavior: smooth;
         }
 
         /* 사이드바 스타일 */
@@ -76,7 +76,7 @@
             justify-content: center;
         }
         .skill {
-            width: 200px;
+            width: 120px;
             text-align: center;
             padding: 20px;
             border-radius: 10px;
@@ -88,32 +88,57 @@
             transform: translateY(-10px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
-        .skill-image {
-            margin-bottom: 15px;
+        .skill i {
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
         .skill h3 {
-            font-size: 1.2rem;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        /* 연락처 섹션 */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .contact-card {
+            width: 250px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact-card i {
+            font-size: 2rem;
             margin-bottom: 10px;
+            color: #6c63ff;
+        }
+        .contact-card p {
+            margin: 10px 0;
             color: #333;
         }
-        .skill p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.4;
+
+        /* 이모티콘 버튼 */
+        .footer-icons {
+            text-align: center;
+            margin-top: 30px;
         }
-        .project-image img {
-             width: 100%; /* 컨테이너 너비에 맞춤 */
-            max-width: 400px; /* 최대 너비 설정 */
-            height: auto; /* 비율 유지 */
-            display: block; /* 중앙 정렬을 위해 블록으로 표시 */
-            margin: 20px auto 40px auto; /* 중앙 정렬 */
+        .footer-icons a {
+            font-size: 2rem;
+            margin: 0 10px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .footer-icons a:hover {
+            color: #6c63ff;
         }
 
         /* 반응형 디자인 */
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
             nav {
                 width: 100%;
                 height: auto;
@@ -147,81 +172,59 @@
     <div class="content">
         <div id="home" class="section">
             <h2>자기소개</h2>
-            <p>안녕하세요! 웹 개발자 문한민입니다. Java, JSP, SQL을 활용하여 창의적이고 실용적인 솔루션을 개발하는 데 열정이 있습니다. 사용자 경험을 최우선으로 생각하며, 항상 더 나은 기술을 배우고 적용하려고 노력하고 있습니다.</p>
+            <p>안녕하세요! 웹 개발자 문한민입니다. Java, JSP, SQL을 활용하여 창의적이고 실용적인 솔루션을 개발하는 데 열정이 있습니다.</p>
         </div>
         <div id="skills" class="section">
             <h2>기술 스택</h2>
             <div class="skill-container">
                 <div class="skill">
-                    <i class="fab fa-java skill-image" style="font-size: 4rem; color: #f89820;"></i>
+                    <i class="fab fa-java"></i>
                     <h3>Java</h3>
-                    <p>객체 지향 프로그래밍 언어로, 다양한 플랫폼에서 사용됩니다. 강력한 라이브러리와 커뮤니티를 자랑합니다.</p>
                 </div>
                 <div class="skill">
-                    <i class="fas fa-file-code skill-image" style="font-size: 4rem; color: #007396;"></i>
+                    <i class="fas fa-file-code"></i>
                     <h3>JSP</h3>
-                    <p>서버에서 동적으로 웹 페이지를 생성하는 기술로, Java 기반의 웹 애플리케이션 개발에 적합합니다.</p>
                 </div>
                 <div class="skill">
-                    <i class="fas fa-database skill-image" style="font-size: 4rem; color: #4db33d;"></i>
+                    <i class="fas fa-database"></i>
                     <h3>SQL</h3>
-                    <p>데이터베이스와 상호작용하여 데이터를 저장, 수정, 검색할 수 있는 쿼리 언어입니다.</p>
                 </div>
                 <div class="skill">
-                    <i class="fab fa-html5 skill-image" style="font-size: 4rem; color: #e34c26;"></i>
+                    <i class="fab fa-html5"></i>
                     <h3>HTML & CSS</h3>
-                    <p>웹 페이지의 구조와 스타일링을 정의하며, 모든 웹 개발의 기본이 되는 기술입니다.</p>
                 </div>
                 <div class="skill">
-                    <i class="fab fa-js-square skill-image" style="font-size: 4rem; color: #f7df1e;"></i>
+                    <i class="fab fa-js-square"></i>
                     <h3>JavaScript</h3>
-                    <p>웹 페이지에 동적인 기능을 추가하며, 브라우저와 상호작용을 가능하게 합니다.</p>
                 </div>
             </div>
         </div>
         <div id="projects" class="section">
             <h2>프로젝트</h2>
             <p>게시판 웹사이트 개발</p>
-            <div class="project-image">
-                <a href="">
-                    <img src="https://github.com/user-attachments/assets/9a04b57f-b83c-4f52-b55c-87da4bf76ad1" alt="프로젝트 이미지">
-                </a>
-            </div>
         </div>
         <div id="contact" class="section">
             <h2>연락처</h2>
             <div class="contact-info">
-                <div><span>이름:</span> 문한민</div>
-                <div><span>이메일:</span> johan1102@naver.com</div>
-                <div><span>전화번호:</span> 010-6633-1836</div>
-                <div><span>주소:</span> 서울특별시 노원구 한글비석로 6</div>
+                <div class="contact-card">
+                    <i class="fas fa-user"></i>
+                    <p>문한민</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <p>johan1102@naver.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <p>010-6633-1836</p>
+                </div>
+            </div>
+            <div class="footer-icons">
+                <a href="#" onclick="alert('전화번호: 010-6633-1836\n이메일: johan1102@naver.com')"><i class="fas fa-comment-dots"></i></a>
+                <a href="https://github.com/hanmin-moon" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </div>
-
-    <script>
-        // IntersectionObserver를 사용해 각 섹션을 감지하여 활성화
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                } else {
-                    entry.target.classList.remove('active');
-                }
-            });
-        }, options);
-
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
 
 </body>
 </html>
