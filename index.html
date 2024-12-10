@@ -21,14 +21,26 @@
             color: white;
             text-align: center;
             padding: 100px 20px;
+            position: relative;
         }
         header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
+            font-weight: bold;
         }
         header p {
             font-size: 1.2rem;
             margin-bottom: 20px;
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         nav {
             position: fixed;
@@ -42,22 +54,24 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 10px 0;
+            padding: 15px 0;
         }
         nav ul li {
-            margin: 0 15px;
+            margin: 0 20px;
         }
         nav ul li a {
             text-decoration: none;
             color: #333;
             font-size: 1.1rem;
-            transition: color 0.3s;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s ease-in-out;
         }
         nav ul li a:hover {
             color: #6c63ff;
         }
         section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -65,22 +79,28 @@
             text-align: center;
             font-size: 2.5rem;
             color: #6c63ff;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .intro {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+            flex-wrap: wrap;
         }
         .intro img {
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
         }
         .intro p {
             flex: 1;
             font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            max-width: 600px;
         }
         .skills ul, .projects ul {
             display: flex;
@@ -93,10 +113,13 @@
         .skills li, .projects li {
             background: #6c63ff;
             color: white;
-            padding: 15px 20px;
+            padding: 15px 25px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease-in-out;
+            font-weight: bold;
+            text-align: center;
+            min-width: 150px;
         }
         .skills li:hover, .projects li:hover {
             transform: scale(1.1);
@@ -107,6 +130,25 @@
             background: #6c63ff;
             color: white;
             margin-top: 50px;
+        }
+        footer p {
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .intro {
+                flex-direction: column;
+                align-items: center;
+            }
+            .intro img {
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -127,7 +169,7 @@
         <h2>소개</h2>
         <div class="intro">
             <img src="https://via.placeholder.com/300" alt="문한민 사진">
-            <p>안녕하세요! 저는 명지전문대를 졸업한 웹 개발자 문한민입니다. Java, JSP, SQL을 활용하여 창의적이고 실용적인 솔루션을 개발하는 데 열정이 있습니다.</p>
+            <p>안녕하세요! 웹 개발자 문한민입니다. Java, JSP, SQL을 활용하여 창의적이고 실용적인 솔루션을 개발하는 데 열정이 있습니다. 사용자 경험을 최우선으로 생각하며, 항상 더 나은 기술을 배우고 적용하려고 노력하고 있습니다.</p>
         </div>
     </section>
     <section id="skills">
@@ -149,7 +191,7 @@
         </ul>
     </section>
     <footer>
-        <p>&copy; 2024 문한민. All rights reserved. </p>
+        <p>&copy; 2024 문한민. All rights reserved.</p>
     </footer>
 </body>
 </html>
