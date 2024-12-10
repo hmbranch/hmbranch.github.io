@@ -110,26 +110,19 @@
             border-radius: 10px;
         }
 
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 15px;
+        /* 연락처 정보 */
+        #contact .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        #contact .contact-info div {
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
         }
-        .contact-form button {
-            background-color: #6c63ff;
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .contact-form button:hover {
-            background-color: #5a54e5;
+        #contact .contact-info span {
+            font-weight: bold;
         }
 
         /* 반응형 디자인 */
@@ -170,7 +163,7 @@
     <div class="content">
         <div id="home" class="section">
             <h2>자기소개</h2>
-            <p>안녕하세요! 저는 명지전문대를 졸업한 웹 개발자 문한민입니다. Java, JSP, SQL을 활용하여 창의적이고 실용적인 솔루션을 개발하는 데 열정이 있습니다. 사용자 경험을 최우선으로 생각하며, 항상 더 나은 기술을 배우고 적용하려고 노력하고 있습니다.</p>
+            <p>안녕하세요! 웹 개발자 문한민입니다. Java, JSP, SQL을 활용하여 창의적이고 실용적인 솔루션을 개발하는 데 열정이 있습니다. 사용자 경험을 최우선으로 생각하며, 항상 더 나은 기술을 배우고 적용하려고 노력하고 있습니다.</p>
         </div>
         <div id="skills" class="section">
             <h2>기술 스택</h2>
@@ -193,12 +186,11 @@
         </div>
         <div id="contact" class="section">
             <h2>연락처</h2>
-            <div class="contact-form">
-                <input type="text" placeholder="이름">
-                <input type="tel" placeholder="전화번호">
-                <input type="email" placeholder="이메일">
-                <textarea placeholder="메시지"></textarea>
-                <button>전송하기</button>
+            <div class="contact-info">
+                <div><span>이름:</span> 문한민</div>
+                <div><span>이메일:</span> johan1102@naver.com</div>
+                <div><span>전화번호:</span> 010-6633-1836</div>
+                <div><span>주소:</span> 서울특별시 노원구 한글비석로 6</div>
             </div>
         </div>
     </div>
