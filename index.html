@@ -11,12 +11,10 @@
             box-sizing: border-box;
         }
         body {
-            display: flex;
-            min-height: 100vh;
             font-family: 'Arial', sans-serif;
             background-color: #f6f6f6;
             overflow-x: hidden;
-            scroll-behavior: smooth; /* 부드러운 스크롤 적용 */
+            scroll-behavior: smooth; /* 부드러운 스크롤 */
         }
 
         /* 사이드바 스타일 */
@@ -56,7 +54,6 @@
             margin-left: 250px;
             width: calc(100% - 250px);
             padding: 50px 20px;
-            overflow-x: hidden;
         }
         .section {
             padding: 60px 20px;
@@ -70,7 +67,7 @@
             transform: translateY(0);
         }
 
-        /* 홈 섹션 */
+        /* 각 섹션 스타일 */
         #home h2 {
             font-size: 2.5rem;
             color: #333;
@@ -81,13 +78,12 @@
             color: #666;
             line-height: 1.8;
         }
-
-        /* 기술 섹션 */
-        #skills h2 {
+        #skills h2, #projects h2, #contact h2 {
             font-size: 2.5rem;
             color: #333;
             margin-bottom: 20px;
         }
+
         #skills ul {
             display: flex;
             justify-content: space-around;
@@ -106,12 +102,6 @@
             background-color: #5a54e5;
         }
 
-        /* 프로젝트 섹션 */
-        #projects h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
         .project-image {
             background-color: #ddd;
             width: 100%;
@@ -120,12 +110,6 @@
             border-radius: 10px;
         }
 
-        /* 연락처 섹션 */
-        #contact h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
         .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 15px;
@@ -220,26 +204,28 @@
     </div>
 
     <script>
-        // 스크롤 이벤트
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            const scrollY = window.scrollY + window.innerHeight;
+        // IntersectionObserver를 사용해 각 섹션을 감지하여 활성화
+        const options = {
+            root: null,  // 뷰포트를 기준으로
+            rootMargin: "0px",
+            threshold: 0.5  // 섹션이 50% 이상 화면에 들어왔을 때
+        };
 
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-
-                // 섹션이 화면에 들어올 때 active 클래스를 추가
-                if (scrollY > sectionTop + sectionHeight / 3) {
-                    section.classList.add('active');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');  // 화면에 들어오면 active 클래스를 추가
                 } else {
-                    section.classList.remove('active');
+                    entry.target.classList.remove('active');  // 화면 밖으로 나가면 active 클래스를 제거
                 }
             });
-        });
+        }, options);
 
-        // 페이지 로드 시 초기 상태에서 스크롤 이벤트 발생
-        window.dispatchEvent(new Event('scroll'));
+        // 모든 섹션에 대해 observer 설정
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     </script>
 
 </body>
