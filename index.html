@@ -72,26 +72,48 @@
         .skill-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
-        }
-        .skill {
-            width: 150px;
-            text-align: center;
             padding: 20px;
-            border-radius: 10px;
+        }
+        .skill-category {
             background-color: #fff;
+            border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 300px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .skill:hover {
+        .skill-category:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
-        .skill h3 {
-            font-size: 1rem;
-            margin-top: 10px;
+        .skill-category h3 {
+            text-align: center;
             color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #6c63ff;
+            padding-bottom: 10px;
+        }
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .skill-item {
+            text-align: center;
+            width: calc(50% - 10px);
+            padding: 10px;
+        }
+        .skill-item i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .skill-item p {
+            color: #666;
+            font-size: 1rem;
         }
 
         /* 프로젝트 이미지 스타일 */
@@ -158,6 +180,9 @@
                 margin-left: 0;
                 width: 100%;
             }
+            .skill-category {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -185,27 +210,56 @@
             </p>
         </div>
         <div id="skills" class="section">
-            <h2>기술 스택</h2>
+            <h2 style="text-align: center; margin-bottom: 40px;">기술 스택</h2>
             <div class="skill-container">
-                <div class="skill">
-                    <i class="fab fa-java" style="font-size: 4rem; color: #f89820;"></i>
-                    <h3>Java</h3>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-java" style="color: #f89820;"></i>
+                            <p>Java</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-file-code" style="color: #007396;"></i>
+                            <p>JSP</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cogs" style="color: #000000;"></i>
+                            <p>MyBatis</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server" style="color: #2496ed;"></i>
+                            <p>Servlet</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill">
-                    <i class="fas fa-file-code" style="font-size: 4rem; color: #007396;"></i>
-                    <h3>JSP</h3>
+                
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-html5" style="color: #e34c26;"></i>
+                            <p>HTML</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt" style="color: #264de4;"></i>
+                            <p>CSS</p>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square" style="color: #f7df1e;"></i>
+                            <p>JavaScript</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill">
-                    <i class="fas fa-database" style="font-size: 4rem; color: #4db33d;"></i>
-                    <h3>SQL</h3>
-                </div>
-                <div class="skill">
-                    <i class="fab fa-html5" style="font-size: 4rem; color: #e34c26;"></i>
-                    <h3>HTML & CSS</h3>
-                </div>
-                <div class="skill">
-                    <i class="fab fa-js-square" style="font-size: 4rem; color: #f7df1e;"></i>
-                    <h3>JavaScript</h3>
+                
+                <div class="skill-category">
+                    <h3>Database</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-database" style="color: #00758f;"></i>
+                            <p>MySQL</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
