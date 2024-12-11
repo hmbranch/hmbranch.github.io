@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="postMapper">
+	
+			<!-- 검색 결과 수 조회 -->
+	<select id="getSearchCount" parameterType="map" resultType="int">
+	    SELECT COUNT(*) 
+	    FROM ${category}
+	    WHERE UPPER(title) LIKE '%' || UPPER(#{keyword}) || '%'
+	</select>
+	
+	<!-- 검색 결과 조회 -->
+	<select id="searchPosts" parameterType="map" resultType="post.PostDTO">
+	    SELECT * FROM (
+	        SELECT a.*, ROWNUM as rnum FROM (
+	            SELECT 
+	                post_id as postId,
+	                category,
+	                title,
+	                content,
+	                author,
+	                created_at as createdAt,
+	                updated_at as updatedAt,
+	                view_count as viewCount,
+	                file_path as filePath,
+	                NVL(likes, 0) as likes
+	            FROM ${category}
+	            WHERE UPPER(title) LIKE '%' || UPPER(#{keyword}) || '%'
+	            ORDER BY post_id DESC
+	        ) a WHERE ROWNUM <![CDATA[<]]>= #{end}
+	    ) WHERE rnum > #{start}
+	</select>
+	
+	<delete id="deletePost" parameterType="map">
+	    DELETE FROM ${category} WHERE post_id = #{postId}
+	</delete>
+	
+	<delete id="deleteComments" parameterType="map">
+	    DELETE FROM comments 
+	    WHERE post_id = #{postId} AND category = #{category}
+	</delete>
+	
+	<update id="updatePost" parameterType="post.PostDTO">
+	    UPDATE ${category} 
+	    SET 
+	        title = #{title},
+	        content = #{content},
+	        updated_at = CURRENT_TIMESTAMP
+	        <if test="filePath != null">, file_path = #{filePath}</if>
+	    WHERE post_id = #{postId}
+	</update>
+	<!-- 추천 추가 -->
+	<insert id="insertLike" parameterType="like.LikeDTO">
+    	INSERT INTO likes (post_id, category, user_id)
+    	VALUES (#{postId}, #{category}, #{userId})
+	</insert>
+
+	<!-- 추천 확인 -->
+	<select id="checkLike" parameterType="like.LikeDTO" resultType="int">
+    	SELECT COUNT(*) FROM likes 
+    	WHERE post_id = #{postId} AND category = #{category} AND user_id = #{userId}
+	</select>
+
+	<!-- 추천수 업데이트 -->
+	<update id="updatePostLikes" parameterType="map">
+    	UPDATE ${category}
+    	SET likes = (
+        	SELECT COUNT(*) FROM likes 
+        	WHERE post_id = #{postId} AND category = #{category}
+    	)
+    	WHERE post_id = #{postId}
+	</update>
+	<!-- 게시글 상세 조회 -->
+	<select id="getPost" parameterType="map" resultType="post.PostDTO">
+    	SELECT 
+        post_id as postId,
+        category,
+        title,
+        content,
+        author,
+        created_at as createdAt,
+        updated_at as updatedAt,
+        view_count as viewCount,
+        file_path as filePath,
+        NVL(likes, 0) as likes
+    FROM ${category}
+    WHERE post_id = #{postId}
+	</select>
+
+	<!-- 추천수 증가 -->
+	<update id="increaseLikes" parameterType="map">
+    	UPDATE ${category}
+    	SET likes = likes + 1
+    	WHERE post_id = #{postId}
+	</update>
+  <!-- 게시글 목록 조회 -->
+   <select id="getPostList" parameterType="map" resultType="post.PostDTO">
+    SELECT * FROM (
+        SELECT A.*, ROWNUM AS rnum FROM (
+            SELECT 
+                post_id as postId,
+                category,
+                title,
+                content,
+                author,
+                created_at as createdAt,
+                updated_at as updatedAt,
+                view_count as viewCount,
+                file_path as filePath,
+                NVL(likes, 0) as likes
+            FROM ${category}
+            	<if test="searchType != null and searchKeyword != null">
+                	<choose>
+                    	<when test="searchType == 'title'">
+                        WHERE title LIKE '%' || #{searchKeyword} || '%'
+                    	</when>
+                    	<when test="searchType == 'popular'">
+                        ORDER BY view_count DESC
+                    	</when>
+                	</choose>
+            	</if>
+            	<if test="searchType == null or searchType != 'popular'">
+                ORDER BY post_id DESC
+            	</if>
+        	) A WHERE ROWNUM <![CDATA[<]]>= #{end}
+    	) WHERE rnum > #{start}
+	</select>
+
+    <!-- 전체 게시글 수 -->
+    <select id="getTotalCount" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM ${category}
+        <if test="searchType == 'title' and searchKeyword != null">
+            WHERE title LIKE '%' || #{searchKeyword} || '%'
+        </if>
+    </select>
+
+    <!-- 조회수 증가 -->
+    <update id="increaseViewCount" parameterType="map">
+        UPDATE ${category} SET view_count = view_count + 1 
+        WHERE post_id = #{postId}
+    </update>
+
+<select id="getNextPostId" resultType="Integer" parameterType="String">
+		SELECT
+		<choose>
+			<when test='_parameter == "notice_post"'>
+    		notice_post_id_seq.NEXTVAL
+		</when>
+		<when test='_parameter == "free_post"'>
+    		free_post_id_seq.NEXTVAL
+		</when>
+		<when test='_parameter == "secret_post"'>
+    		secret_post_id_seq.NEXTVAL
+		</when>
+		<when test='_parameter == "game_post"'>
+    		game_post_id_seq.NEXTVAL
+		</when>
+	</choose>
+	FROM dual
+</select>
+
+<insert id="insertPost" parameterType="post.PostDTO">
+	<choose>
+		<when test='category == "notice_post"'>
+    		insert into notice_post (post_id, category, title, content, author, created_at, updated_at, view_count, file_path)
+    		VALUES (#{postId}, #{category}, #{title}, #{content}, #{author}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, #{filePath,jdbcType=VARCHAR})
+		</when>
+		<when test='category == "free_post"'>
+    		insert into free_post (post_id, category, title, content, author, created_at, updated_at, view_count, file_path)
+    		VALUES (#{postId}, #{category}, #{title}, #{content}, #{author}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, #{filePath,jdbcType=VARCHAR})
+		</when>
+		<when test='category == "secret_post"'>
+    		insert into secret_post (post_id, category, title, content, author, created_at, updated_at, view_count, file_path)
+    		VALUES (#{postId}, #{category}, #{title}, #{content}, #{author}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, #{filePath,jdbcType=VARCHAR})
+		</when>
+		<when test='category == "game_post"'>
+   			insert into game_post (post_id, category, title, content, author, created_at, updated_at, view_count, file_path)
+    		VALUES (#{postId}, #{category}, #{title}, #{content}, #{author}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, #{filePath,jdbcType=VARCHAR})
+		</when>
+	</choose>
+</insert>
+
+</mapper>
